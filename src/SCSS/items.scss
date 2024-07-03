@@ -1,0 +1,19 @@
+// src/ItemCard.scss
+.item-card {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background-color: rgba(145, 219, 219, 0.268);
+    border-radius: 20px;
+    .item-card__image{
+        flex: 0.33;
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    }
+    .item-card__details{
+
+    }
+  }
+  
