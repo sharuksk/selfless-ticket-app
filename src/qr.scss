@@ -1,4 +1,11 @@
+
+.QR-Scan-main{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
 .QR-read{
     width: 500px;
-    height: 500px;
+    height: 400px;
+    border-radius: 30px;
 }

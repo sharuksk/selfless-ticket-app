@@ -12,7 +12,6 @@ const QrScanner = () => {
   const handleResult = (result, error) => {
     if (result) {
       setScanResults((prevResults) => [...prevResults, result?.text]);
-      setScanned(true);  // Stop the QR Reader after scanning
     }
 
     if (error) {
@@ -29,7 +28,8 @@ const QrScanner = () => {
         </div>
       ) : (
         <div>
-          <button onClick={() => setPageStatus(true)}>New Button</button>
+          <button onClick={() => {setPageStatus(true); setScanned(true);}}>New Button</button>
+          <div className='QR-Scan-main'>
           {!scanned && (
             <QrReader
               className='QR-read'
@@ -40,7 +40,7 @@ const QrScanner = () => {
             <h3>Scanned Codes:</h3>
             <ul>
               {scanResults.map((result, index) => (
-                <li key={index}>
+                <li key={index} style={{gap: "20px"}}>
                   <ItemCard 
                     image="https://rukminim2.flixcart.com/image/612/612/kw85bww0/t-shirt/t/0/4/s-ts-801-803-tqh-original-imag8ycsms2ej5fz.jpeg?q=70"
                     title={result}
@@ -51,6 +51,7 @@ const QrScanner = () => {
               ))}
             </ul>
           </div>
+        </div>
         </div>
       )}
     </div>
