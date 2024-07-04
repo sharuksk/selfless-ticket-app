@@ -11,7 +11,8 @@ const QrScanner = () => {
 
   const handleResult = (result, error) => {
     if (result) {
-      setScanResults((prevResults) => [...prevResults, result?.text]);
+      setScanResults(scanResults => [...scanResults, result?.text]);
+      console.log(scanResults)
     }
 
     if (error) {
@@ -34,6 +35,7 @@ const QrScanner = () => {
             <QrReader
               className='QR-read'
               onResult={handleResult}
+              scanDelay={1000}
             />
           )}
           <div>
