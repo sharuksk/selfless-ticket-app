@@ -4,6 +4,8 @@ import { QrReader } from 'react-qr-reader';
 import ItemCard from './components/items';
 import './qr.scss';
 
+//push
+
 const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
   const [scanResults, setScanResults] = useState([]);
