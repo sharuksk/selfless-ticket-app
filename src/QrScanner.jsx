@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { QrReader } from 'react-qr-reader';
 import ItemCard from './components/items';
 import './qr.scss';
+import axios from 'axios';
 
 const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
@@ -10,21 +11,38 @@ const QrScanner = () => {
   const [scanned, setScanned] = useState(false);
   const lastScanTimeRef = useRef(0);
 
-  const handleResult = (result, error) => {
+  const handleResult = async (result, error) => {
     const currentTime = new Date().getTime();
 
     if (result) {
       if (currentTime - lastScanTimeRef.current > 2000) { // 2 seconds debounce
         lastScanTimeRef.current = currentTime;
-        setScanResults(scanResults => [...scanResults, result?.text]);
-        console.log(scanResults);
+        let rest = result.text;
+        await axios
+        .post(`http://localhost:5000/api/items/getItem`, { results: rest })
+        .then((res) => {
+          // console.log(res.data);
+          setScanResults(scanResults => [...scanResults, res.data]);
+          console.log(scanResults);
+        });
       }
     }
 
     if (error) {
-      console.error(error);
+      // console.log("error");
     }
   };
+
+  const handleDeleteReply = async (targetIndex) => {
+    try {
+        console.log(targetIndex);
+        const newArray = scanResults.filter((item, index) => index !== targetIndex);
+        setScanResults(newArray);
+        
+    } catch (err) {
+        console.log(err);
+    }
+};
 
   return (
     <div>
@@ -50,11 +68,23 @@ const QrScanner = () => {
                 {scanResults.map((result, index) => (
                   <li key={index} style={{ gap: "20px" }}>
                     <ItemCard 
-                      image="https://rukminim2.flixcart.com/image/612/612/kw85bww0/t-shirt/t/0/4/s-ts-801-803-tqh-original-imag8ycsms2ej5fz.jpeg?q=70"
-                      title={result}
-                      description="Available offers: Bank OfferGet ₹50 Instant Discount on first Flipkart UPI transaction on order of ₹200 and above. Bank Offer5% Cashback on Flipkart Axis Bank Card. Special PriceGet extra ₹6500 off (price inclusive of cashback/coupon). FreebieSpotify Premium - 3M at ₹119."
-                      price="999"
+                      image={result.itemImage[0]}
+                      title={result.itemName}
+                      description={result.itemDescription}
+                      price={result.itemPrice}
                     />
+                    <button
+                        className="deleteBtn"
+                        style={{
+                            width: "200px",
+                            height: "80px",
+                        }}
+                        onClick={() => {
+                            handleDeleteReply(
+                              index,
+                            );
+                        }}
+                    ></button>
                   </li>
                 ))}
               </ul>
