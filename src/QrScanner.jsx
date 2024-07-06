@@ -9,6 +9,7 @@ const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
   const [scanResults, setScanResults] = useState([]);
   const [scanned, setScanned] = useState(false);
+  const [total, setTotal] = useState(0);
   const lastScanTimeRef = useRef(0);
 
   const handleResult = async (result, error) => {
@@ -23,8 +24,11 @@ const QrScanner = () => {
         .then((res) => {
           // console.log(res.data);
           setScanResults(scanResults => [...scanResults, res.data]);
+          setTotal(total => total + res.data.itemPrice);
           console.log(scanResults);
-        });
+        })
+        .catch(console.log("no data"))
+        ;
       }
     }
 
@@ -53,7 +57,7 @@ const QrScanner = () => {
         </div>
       ) : (
         <div>
-          <button onClick={() => { setPageStatus(true); setScanned(true); }}>New Button</button>
+          <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0) }}>New Button</button>
           <div className='QR-Scan-main'>
             {!scanned && (
               <QrReader
@@ -88,6 +92,8 @@ const QrScanner = () => {
                   </li>
                 ))}
               </ul>
+              <h2>{`Total Amount: ${total}`}</h2>
+
             </div>
           </div>
         </div>
