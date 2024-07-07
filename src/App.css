@@ -1,6 +1,10 @@
 .App {
+  margin: 0;
+  border-bottom: 0;
   text-align: center;
   align-items: center;
+  height: 100vh;
+  background: url('../src/images/AI_image.jpg')
 }
 
 .App-logo {
