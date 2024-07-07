@@ -42,6 +42,7 @@ const QrScanner = () => {
         console.log(targetIndex);
         const newArray = scanResults.filter((item, index) => index !== targetIndex);
         setScanResults(newArray);
+        setTotal(total => total - scanResults[targetIndex].itemPrice);
         
     } catch (err) {
         console.log(err);
@@ -68,7 +69,7 @@ const QrScanner = () => {
             )}
             <div>
               <h3>Scanned Codes:</h3>
-              <ul>
+              <ul className='unorderedList'>
                 {scanResults.map((result, index) => (
                   <li key={index} style={{ gap: "20px" }}>
                     <ItemCard 
@@ -80,19 +81,19 @@ const QrScanner = () => {
                     <button
                         className="deleteBtn"
                         style={{
-                            width: "200px",
-                            height: "80px",
+                            width: "100px",
+                            height: "50px",
                         }}
                         onClick={() => {
                             handleDeleteReply(
                               index,
                             );
                         }}
-                    ></button>
+                    >Delete</button>
                   </li>
                 ))}
               </ul>
-              <h2>{`Total Amount: ${total}`}</h2>
+              <h2>Total Amount: <span>QAR {total}</span></h2>
 
             </div>
           </div>

@@ -14,8 +14,6 @@ const App = () => {
   return (
     <Router>
     <div className='App'>
-      <h1>QR Code Scanner App</h1>
-      
       <QrScanner />
         {/* <Routes>
             <Route path="/items" element={<Item/>} />

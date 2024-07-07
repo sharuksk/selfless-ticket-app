@@ -11,7 +11,7 @@ const ItemCard = ({ image, title, price, description }) => {
       <div className="item-card__details">
         <h3 className="item-card__title">{title}</h3>
         <p className='item-card-desc'>{description}</p>
-        <p className="item-card__price">₹{price}</p>
+        <p className="item-card__price">QAR {price}</p>
       </div>
     </div>
   );

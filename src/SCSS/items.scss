@@ -1,15 +1,15 @@
 // src/ItemCard.scss
 .item-card {
     display: flex;
-    width: 600px;
-    height: 200px;
-    background-color: rgba(145, 219, 219, 0.268);
+    width: 400px;
+    height: 100px;
+    background-color: rgba(226, 222, 215, 0.756);
     border-radius: 20px;
     .item-card__image{
         flex: 0.33;
         img{
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
         }
     }
     .item-card__details{
