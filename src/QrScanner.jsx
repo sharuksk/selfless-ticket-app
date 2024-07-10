@@ -4,6 +4,7 @@ import { QrReader } from 'react-qr-reader';
 import ItemCard from './components/items';
 import './qr.scss';
 import axios from 'axios';
+import Invoice from './components/invoice';
 
 const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
@@ -12,6 +13,19 @@ const QrScanner = () => {
   const [total, setTotal] = useState(0);
   const lastScanTimeRef = useRef(0);
 
+  const printRef = useRef();
+
+  const handlePrint = () => {
+    const printContents = printRef.current.innerHTML;
+    const printWindow = window.open('', '', 'height=500, width=800');
+    printWindow.document.write('<html><head><title>Futad Invoice Generating</title>');
+    printWindow.document.write('<style>table { width: 100%; border-collapse: collapse; } table, th, td { border: 1px solid black; padding: 10px; } th, td { text-align: left; } </style>');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(printContents);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+  };
   const handleResult = async (result, error) => {
     const currentTime = new Date().getTime();
 
@@ -94,6 +108,17 @@ const QrScanner = () => {
                 ))}
               </ul>
               <h2>Total Amount: <span>QAR {total}</span></h2>
+              <div style={{backgroundColor: "white"}}>
+              <div ref={printRef}>
+                <Invoice 
+                  data={scanResults}
+                  total={total}
+                 />
+              </div>
+              <button onClick={handlePrint} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}>
+                Print Invoice
+              </button>
+              </div>
 
             </div>
           </div>
