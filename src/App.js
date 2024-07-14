@@ -10,8 +10,6 @@ import {
 import './App.css'
 
 
-//push
-
 const App = () => {
   return (
     <Router>
