@@ -68,11 +68,11 @@ const QrScanner = () => {
       <h2>QR Code Scanner</h2>
       {pageStatus ? (
         <div>
-          <button onClick={() => setPageStatus(false)}>New Button</button>
+          <button onClick={() => setPageStatus(false)}> Click to Scan: </button>
         </div>
       ) : (
         <div>
-          <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0) }}>New Button</button>
+          <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0) }}>Stop Scanning: </button>
           <div className='QR-Scan-main'>
             {!scanned && (
               <QrReader
@@ -108,6 +108,11 @@ const QrScanner = () => {
                 ))}
               </ul>
               <h2>Total Amount: <span>QAR {total}</span></h2>
+              <button onClick={handlePrint} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}>
+                Checkout Your Order
+              </button>
+              </div>
+              <div>
               <div style={{backgroundColor: "white"}}>
               <div ref={printRef}>
                 <Invoice 

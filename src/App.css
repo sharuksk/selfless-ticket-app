@@ -4,7 +4,7 @@
   text-align: center;
   align-items: center;
   height: 100vh;
-  background: url('../src/images/AI_image.jpg')
+  margin-top: 50px;
 }
 
 .App-logo {
