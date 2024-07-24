@@ -1,10 +1,11 @@
 // QrScanner.js
 import React, { useState, useRef } from 'react';
 import { QrReader } from 'react-qr-reader';
-import ItemCard from './components/items';
-import './qr.scss';
+import ItemCard from './items';
+import '../SCSS/qr.scss';
 import axios from 'axios';
-import Invoice from './components/invoice';
+import Invoice from './invoice';
+import { useNavigate } from 'react-router-dom';
 
 const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
@@ -12,6 +13,7 @@ const QrScanner = () => {
   const [scanned, setScanned] = useState(false);
   const [total, setTotal] = useState(0);
   const lastScanTimeRef = useRef(0);
+  const navigate = useNavigate();
 
   const printRef = useRef();
 
@@ -129,6 +131,10 @@ const QrScanner = () => {
           </div>
         </div>
       )}
+
+      <button onClick={()=> navigate("/newitem")} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}>
+
+      </button>
     </div>
   );
 };
