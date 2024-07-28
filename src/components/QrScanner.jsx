@@ -6,8 +6,7 @@ import '../SCSS/qr.scss';
 import axios from 'axios';
 import Invoice from './invoice';
 import { useNavigate } from 'react-router-dom';
-const BASE_URL = import.meta.env.API_BASE_URL;
-
+import { API_BASE_URL } from "../nodelink";
 const QrScanner = () => {
   const [pageStatus, setPageStatus] = useState(true);
   const [scanResults, setScanResults] = useState([]);
@@ -37,7 +36,7 @@ const QrScanner = () => {
         lastScanTimeRef.current = currentTime;
         let rest = result.text;
         await axios
-        .post(`${BASE_URL}/items/getItem`, { results: rest })
+        .post(`${API_BASE_URL}/items/getItem`, { results: rest })
         .then((res) => {
           // console.log(res.data);
           setScanResults(scanResults => [...scanResults, res.data]);
