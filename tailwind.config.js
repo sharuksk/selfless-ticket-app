@@ -2,8 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'addRect': "url('./assets/addRect.png')",
+      },
+    },
   },
   plugins: [],
 }
+
+
 

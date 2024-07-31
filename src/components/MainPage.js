@@ -6,15 +6,17 @@ import {
     useNavigate,
 } from "react-router-dom";
 import QrScanner from './QrScanner';
-import AddItems from '../pages/AddItems';
+import AddItems from '../pages/addItems';
 import ListItems from '../pages/ListItems';
+import Dashboard from '../pages/dashboard';
 
 const MainPage = () => {
   return (
     <Routes>
-        <Route path="/dashboard" element={<QrScanner/>} />
-        <Route path="/addItems" element={<AddItems/>} />
-        <Route path="/list" element={<ListItems/>} />
+        <Route path="/" element={<Dashboard/>} />
+        <Route path="/shopproduct" element={<QrScanner/>} />
+        <Route path="/addproduct" element={<AddItems/>} />
+        <Route path="/listproduct" element={<ListItems/>} />
     </Routes>
   )
 }
