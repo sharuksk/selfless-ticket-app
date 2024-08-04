@@ -31,20 +31,26 @@ const ListItems = () => {
     return (
         <div className='flex gap-4 justify-center items-center bg-addRect border-2 rounded-2xl'>
             {data.length > 0 && data.map((item) => (
-                <div key={item.itemId} className="max-w-sm rounded overflow-hidden shadow-lg bg-addRect border-2 rounded-2xl p-6 m-4">
-                    <img className="w-150 h-150 object-cover" src={item.itemImage} alt="Product Image" />
+                <div key={item.itemId} className=" flex flex-col max-w-sm rounded overflow-hidden shadow-lg bg-addRect border-2 rounded-2xl p-6 m-4">
+                    <img className="w-[150px] h-[150px] rounded-2xl flex self-center" src={item.itemImage} alt="Product Image" />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">{item.itemName}</div>
                         <p className="text-gray-700 text-base">
                             {item.itemDescription}
                         </p>
+                        <p className='text-atlantis font-bold'>
+                            {item.itemPrice} QAR
+                        </p>
                     </div>
-                    <div className="px-6 pt-4 pb-2">
-                        <span className="inline-block bg-green-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
-                            QAR {item.itemPrice}
-                        </span>
+                    <div className="flex justify-around gap-2">
                         <button 
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                className="bg-atlantis rounded-full text-white px-10 py-2"
+                                // onClick={() => handleDelete(item)}
+                            >
+                                Edit
+                        </button>
+                        <button 
+                            className="bg-atlantis rounded-full text-white px-10 py-2"
                             onClick={() => handleDelete(item)}
                         >
                             Delete

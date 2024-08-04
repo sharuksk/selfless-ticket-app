@@ -76,7 +76,7 @@ const ScanPage = () => {
         <div>
           <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0) }}>Stop Scanning: </button>
           <div  className='flex bg-addRect justify-center border-2 rounded-2xl items-center gap-10 w-[1364px] h-[625px]'>
-            <div className='flex-0.4 p-4 pl-20 flex flex-col justify-center items-center border-2'>
+            <div className='flex-0.4 p-4 pl-20 flex flex-col justify-center items-center'>
             {!scanned && (
               <QrReader className='w-[400px] h-3/5 rounded-full'
                 showViewFinder={false}

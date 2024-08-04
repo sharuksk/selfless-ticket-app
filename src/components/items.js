@@ -1,17 +1,16 @@
 // src/ItemCard.js
 import React from 'react';
-import '../SCSS/items.scss';
 
 const ItemCard = ({ image, title, price, description }) => {
   return (
-    <div className="item-card">
-      <div className="item-card__image">
+    <div className="flex gap-6">
+      <div className="flex-0.4 rounded-2xl w-[100px] h-[100px]">
         <img src={image} alt={title} />
       </div>
-      <div className="item-card__details">
-        <h3 className="item-card__title">{title}</h3>
-        <p className='item-card-desc'>{description}</p>
-        <p className="item-card__price">QAR {price}</p>
+      <div className="pl-4 flex flex-col">
+        <div className="text-atlantis font-bold self-start">{title}</div>
+        <div className='font-thin self-start'>{description}</div>
+        <div className="font-bold self-start">QAR {price}</div>
       </div>
     </div>
   );
