@@ -29,9 +29,9 @@ const ListItems = () => {
     };
 
     return (
-        <div className='flex gap-4 justify-center items-center'>
+        <div className='flex gap-4 justify-center items-center bg-addRect border-2 rounded-2xl'>
             {data.length > 0 && data.map((item) => (
-                <div key={item.itemId} className="max-w-sm rounded overflow-hidden shadow-lg bg-white p-6 m-4">
+                <div key={item.itemId} className="max-w-sm rounded overflow-hidden shadow-lg bg-addRect border-2 rounded-2xl p-6 m-4">
                     <img className="w-150 h-150 object-cover" src={item.itemImage} alt="Product Image" />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">{item.itemName}</div>
@@ -47,7 +47,7 @@ const ListItems = () => {
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => handleDelete(item)}
                         >
-                            Buy Now
+                            Delete
                         </button>
                     </div>
                 </div>

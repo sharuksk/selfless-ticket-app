@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL } from "../nodelink";
-const AddItems = () => {
+const EditProducts = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -53,9 +53,9 @@ const AddItems = () => {
   return (
 
     <>
-      <div className="flex justify-center items-center w-[920px] h-[554px] absolute">
-        <div className="flex-1 flex items-center justify-center h-full bg-addRect border-2 rel rounded-2xl bg-no-repeat bg-left-top">
-          <div className="relative">
+      <div className="flex justify-center items-center w-[920px] h-[554px]">
+        <div className="flex-1 flex items-center justify-center h-full bg-addRect backgroundOpacity-10 bg-no-repeat bg-left-top">
+          
           <form className="flex space-y-6 flex-col items-center justify-center">
           <h1 className="text-white font-bold text-2xl">ADD PRODUCTS</h1>
             <div className="flex">
@@ -133,12 +133,11 @@ const AddItems = () => {
             </div>
 
             <div>
-              <button type="submit" className="bg-atlantis rounded-full text-white px-10 py-2" onClick={handleSubmit}>
+              <button type="submit" className="bg-#2dd4bf" onClick={handleSubmit}>
                 Submit
               </button>
             </div>
           </form>
-          </div>
         </div>
         <div className="flex-none w-20 h-full">
 
@@ -148,4 +147,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default EditProducts;

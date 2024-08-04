@@ -7,14 +7,20 @@ module.exports = {
         regular:("Regular"),
 
       },
+      colors: {
+        'atlantis': '#3FDBCE',
+        'cardbg': "#FFFFFF91",
+      },
+      backgroundOpacity: ['active'],
       backgroundOpacity: {
         '10': '0.1',
         '20': '0.2',
+        '50': '0.5',
         '95': '0.95',
        },
       backgroundImage: {
-        'addRect': "url('./assets/addRect.png')",
-
+        'addRect': "linear-gradient(180deg, #808080, #FFFFFF)",
+        
       },
     },
   },

@@ -2,7 +2,7 @@ import React from 'react'
 
 const ItemCard = ({name, desc, price, image }) => {
   return (
-    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white p-6 m-4">
+    <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-addRect p-6 m-4">
     <img class="w-150 h-150" src={image} alt="Product Image"/>
     <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{name}</div>
