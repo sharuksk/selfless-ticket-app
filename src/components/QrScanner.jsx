@@ -2,7 +2,6 @@
 import React, { useState, useRef } from 'react';
 import { QrReader } from 'react-qr-reader';
 import ItemCard from './items';
-import '../SCSS/qr.scss';
 import axios from 'axios';
 import Invoice from './invoice';
 import { useNavigate } from 'react-router-dom';
@@ -67,14 +66,14 @@ const QrScanner = () => {
 
   return (
     <div>
-      <h2>QR Code Scanner</h2>
       {pageStatus ? (
         <div>
+          <h2>QR Code Scanner</h2>
           <button onClick={() => setPageStatus(false)}> Click to Scan: </button>
         </div>
       ) : (
         <div>
-          <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0) }}>Stop Scanning: </button>
+          <button onClick={() => { setPageStatus(true); setScanned(false); setScanResults([]); setTotal(0);}}>Stop Scanning: </button>
           <div className='QR-Scan-main'>
             {!scanned && (
               <QrReader
